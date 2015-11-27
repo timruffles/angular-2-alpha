@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Angular 2 is coming!</title>
+  
+  <link rel="stylesheet" href="reveal/css/reveal.min.css">
+  <link rel="stylesheet" href="reveal/lib/css/googlecode.css">
+
+  <link rel="stylesheet" href="src/slides-theme/style.css">
+  <link rel="stylesheet" href="src/slides-theme/talk-specific.css">
+
+  <!-- demos -->
+
+  <!-- for live coding -->
+  <link rel="stylesheet" href="src/js/little-console.css" id="theme">
+
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24335480-1']);
+  _gaq.push(['_trackPageview']);
+
+  var asyncScript = function(src) {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = src;
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  };
+
+  asyncScript(('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js');
+  </script>
+
+  <script src="src/js/revealHooks.js"></script>
+
+</head>
+
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+<section  class="front"><h2 id="angular-2-is-coming-">Angular 2 is coming!</h2>
+<p><a href="https://truffles.me.uk">@timruffles</a>
+<a href="http://twitter.com/sidekicksrc">@sidekicksrc</a></p>
+</section>
+
+<section data-state='title' class=""><h2 id="ng2-is-alpha">ng2 is alpha</h2>
+</section>
+
+<section  class=""><h2 id="very-alpha">Very alpha</h2>
+</section>
+
+<section  class=""><h2 id="moving-target">Moving target</h2>
+<p><img src='src/img/ouch.gif' width=660 height=500></p>
+</section>
+
+<section  class=""><h2 id="docs-">Docs :(</h2>
+<ul>
+<li>but coming in beta!</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="patchy-non-typescript-workflow">Patchy non-TypeScript workflow</h2>
+<ul>
+<li>with even less documentation...</li>
+</ul>
+</section>
+
+<section data-state='notitle' class=""><h2 id="-"> </h2>
+<blockquote>
+<p>Angular 2 is still in the works. The core concepts are solid, but the API may change</p>
+</blockquote>
+<p>Victor Savkin, 12th Oct.</p>
+</section>
+
+<section  class=""><h2 id="but-">But...</h2>
+</section>
+
+<section  class=""><h2 id="google-in-production">Google in production</h2>
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Fiber launched this week as Google&#39;s first Angular 2 application. &#10;<a href="https://t.co/CgOIiuq13U">https://t.co/CgOIiuq13U</a> <a href="https://t.co/hsKlpHA4y6">pic.twitter.com/hsKlpHA4y6</a></p>&mdash; Brad Green (@bradlygreen) <a href="https://twitter.com/bradlygreen/status/667759087359168512">November 20, 2015</a></blockquote>
+
+</section>
+
+<section  class=""><h2 id="focus-on-concepts">Focus on concepts</h2>
+</section>
+
+<section data-state='title' class=""><h2 id="big-goals">Big goals</h2>
+</section>
+
+<section  class=""><h2 id="components">Components</h2>
+</section>
+
+<section  class=""><h2 id="dependecy-injection">Dependecy Injection</h2>
+</section>
+
+<section  class=""><h2 id="evolution-from-ng1">Evolution from ng1</h2>
+</section>
+
+<section data-state='title' class=""><h2 id="components">Components</h2>
+</section>
+
+<section  class=""><h2 id="our-first-component">Our first component</h2>
+<pre><code class="lang-javascript">import { Component } from &#39;angular2/angular2&#39;;
+
+export { HelloComponent };
+
+@Component({
+  selector: &#39;hello-angular&#39;,
+  template: &#39;&lt;h1&gt;{{ message }}&lt;/h1&gt;&#39;,
+})
+class HelloComponent {
+  constructor() { 
+    this.message = &quot;Hi there&quot;;
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="woah-">Woah!</h2>
+</section>
+
+<section  class=""><h2 id="bit-by-bit">Bit by bit</h2>
+</section>
+
+<section data-state='notitle' class=""><h2 id="-"> </h2>
+<pre><code class="lang-javascript">import { Component } from &#39;angular2/angular2&#39;;
+</code></pre>
+</section>
+
+<section data-state='notitle' class=""><h2 id="-"> </h2>
+<pre><code class="lang-javascript">export { HelloComponent };
+</code></pre>
+</section>
+
+<section data-state='notitle' class=""><h2 id="-"> </h2>
+<pre><code class="lang-javascript">@Component({
+  // any CSS selector
+  selector: &#39;hello-angular&#39;,
+  // ...
+})
+</code></pre>
+</section>
+
+<section data-state='notitle' class=""><h2 id="-"> </h2>
+<pre><code class="lang-javascript">@Component({
+  // ...
+  template: &#39;&lt;h1&gt;{{ message }}&lt;/h1&gt;&#39;,
+})
+</code></pre>
+</section>
+
+<section data-state='notitle' class=""><h2 id="-"> </h2>
+<pre><code class="lang-javascript">class HelloComponent {
+  constructor() { 
+    this.message = &quot;Hi there&quot;;
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="all-together">All together</h2>
+<pre><code class="lang-javascript">import { Component } from &#39;angular2/angular2&#39;;
+
+export { HelloComponent };
+
+@Component({
+  selector: &#39;hello-angular&#39;,
+  template: &#39;&lt;h1&gt;{{ message }}&lt;/h1&gt;&#39;,
+})
+class HelloComponent {
+  constructor() { 
+    this.message = &quot;Hi there&quot;;
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="that-s-an-app-">That&#39;s an app!</h2>
+<pre><code class="lang-javascript">import { HelloComponent } from &quot;./HelloComponent&quot;;
+import { bootstrap } from &quot;angular2/angular2&quot;;
+
+bootstrap(HelloComponent);
+</code></pre>
+<pre><code class="lang-javascript">&lt;!DOCTYPE html&gt;
+&lt;hello-component&gt;&lt;/hello-component&gt;
+&lt;!-- with a production bundle --&gt;
+&lt;script src=&quot;dist/app.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="hierarchy">Hierarchy</h2>
+<pre><code class="lang-typescript">import { Component } from &#39;angular2/angular2&#39;;
+import { HelloComponent } from &#39;./HelloComponent&#39;;
+
+export { FrontPage };
+
+@Component({
+  selector: &#39;front-page&#39;,
+  directives: [HelloComponent],
+  template: &#39;&lt;hello-angular&gt;&lt;/hello-angular&gt;&#39;,
+})
+class FrontPage {
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="explicit">Explicit</h2>
+<pre><code class="lang-typescript">import { Component, FORM_DIRECTIVES, CORE_DIRECTIVES }
+ from &#39;angular2/angular2&#39;;
+
+@Component({
+  directives: [FORM_DIRECTIVES, CORE_DIRECTIVES],
+  // ...
+})
+</code></pre>
+</section>
+
+<section  class=""><h2 id="new-template-syntax">New template syntax</h2>
+</section>
+
+<section  class=""><h2 id="data-binding">Data binding</h2>
+<pre><code class="lang-html">&lt;!-- like ng 1 - interpolated --&gt;
+&lt;div title=&quot;Hello {{ person }}&quot;&gt;
+&lt;!-- whole attribute --&gt;
+&lt;div [title]=&quot;getMessage()&quot;&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="pipes-new-name-for-filters-">Pipes (new name for filters)</h2>
+<pre><code class="lang-html">&lt;div [title]=&quot;getMessage() | toTitle&quot;&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="event-handling">Event-handling</h2>
+<pre><code class="lang-html">&lt;!-- DOM events --&gt;
+&lt;form (submit)=&quot;create($event)&quot;&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="two-way-data-binding">Two-way data-binding</h2>
+<pre><code class="lang-html">&lt;!-- the local ourName property will be two way bound to <code>name</code>
+     of our some-editor component --&gt;
+&lt;some-editor ([name])=&quot;ourName&quot;&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="local-variables">Local variables</h2>
+<pre><code class="lang-html">&lt;video #movieplayer &gt;
+  &lt;button (click)=&quot;movieplayer.play()&quot;&gt;
+&lt;/video&gt;
+</code></pre>
+</section>
+
+<section data-state='title' class=""><h2 id="let-s-have-a-go">Let&#39;s have a go</h2>
+</section>
+
+<section data-state='title' class=""><h2 id="better-di">Better DI</h2>
+</section>
+
+<section  class=""><h2 id="first-why-di-">First: why DI?</h2>
+</section>
+
+<section  class=""><h2 id="two-benefits">Two benefits</h2>
+</section>
+
+<section  class=""><h2 id="one-testing">One: testing</h2>
+</section>
+
+<section  class=""><h2 id="two-multiple-implementations">Two: multiple implementations</h2>
+</section>
+
+<section  class=""><h2 id="angular-1">Angular 1</h2>
+</section>
+
+<section  class=""><h2 id="crufty">Crufty</h2>
+<pre><code class="lang-javascript">module.service(&quot;User&quot;, calledWithNew);
+module.factory(&quot;User&quot;, usesReturnValue);
+module.provider(&quot;User&quot;, returnsProviderConfig);
+module.value(&quot;User&quot;, User);
+</code></pre>
+</section>
+
+<section  class=""><h2 id="implicit">Implicit</h2>
+<ul>
+<li>e.g &#39;where did this service come from?!&#39;</li>
+<li>file location opaque</li>
+</ul>
+<pre><code class="lang-javascript">module.controller(&quot;UserCtrl&quot;, function(
+  User
+  , Login
+  , errors
+) {
+  // unclear where the above came from physically
+  // (without conventions)
+})
+</code></pre>
+</section>
+
+<section  class=""><h2 id="app-wide">App-wide</h2>
+<ul>
+<li>Can&#39;t switch provider for part of an app</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="angular-2">Angular 2</h2>
+</section>
+
+<section  class=""><h2 id="let-s-define-a-service-">Let&#39;s define a &#39;service&#39;</h2>
+</section>
+
+<section  class=""><h2 id="oh">Oh</h2>
+<pre><code class="lang-javascript">export { Greeter };
+
+class Greeter {
+  message(name) {
+    return &#39;Hello ${name}, 
+      Angular 2 is easy&#39;;
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="using-a-service">Using a service</h2>
+</section>
+
+<section  class=""><h2 id="better-api">Better API</h2>
+<pre><code class="lang-typescript">import { Component } from &#39;angular2/angular2&#39;;
+import { Greeter } from &#39;./greeter&#39;;
+
+@Component({
+  // setup
+  providers: [Greeter],
+})
+class HelloComponent {
+  constructor(greeter: Greeter) { 
+    this.message = greeter.message();
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="hierarchical">Hierarchical</h2>
+<pre><code class="lang-typescript">import { Greeter } from &#39;./greeter&#39;;
+
+bootstrap(FrontPage, [Greeter]);
+</code></pre>
+<pre><code class="lang-typescript">import { Greeter } from &#39;./greeter&#39;;
+
+@Component({
+  // don&#39;t be explicit
+  providers: [],
+})
+class HelloComponent {
+  constructor(greeter: Greeter) { 
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="tree">Tree</h2>
+<p><img src="src/img/injector-tree.png" alt="injector tree"></p>
+</section>
+
+<section data-state='title' class=""><h2 id="let-s-have-a-go">Let&#39;s have a go</h2>
+</section>
+
+<section data-state='title' class=""><h2 id="evolution">Evolution</h2>
+</section>
+
+<section  class=""><h2 id="1-5">1.5</h2>
+<ul>
+<li>new <code>module.component</code> method</li>
+<li>aiming for Jan</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="-ngupgrade-"><code>ngUpgrade</code></h2>
+<ul>
+<li>can run ng 1 and ng 2 in parallel</li>
+</ul>
+</section>
+
+<section data-state='title' class=""><h2 id="learning-from-1-x">Learning from 1.x</h2>
+</section>
+
+<section  class=""><h2 id="routing">Routing</h2>
+</section>
+
+<section  class=""><h2 id="component-router">Component Router</h2>
+<ul>
+<li>1.x and 2.x</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="structured">Structured</h2>
+<p><img src="src/img/component-router.png" alt="component router"></p>
+</section>
+
+<section data-state='title' class=""><h2 id="let-s-have-a-go">Let&#39;s have a go</h2>
+</section>
+
+<section  class=""><h2 id="performance">Performance</h2>
+</section>
+
+<section  class=""><h2 id="pre-compilation">Pre-compilation</h2>
+<ul>
+<li>reduces load and run cost</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="web-workers">Web-workers</h2>
+<ul>
+<li>only UI updates run in main thread</li>
+<li><em>does</em> require certain constraints</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="mobile">Mobile</h2>
+</section>
+
+<section  class=""><h2 id="native-script">Native Script</h2>
+</section>
+
+<section data-state='title' class=""><h2 id="predicability">Predicability</h2>
+</section>
+
+<section  class=""><h2 id="ng-1-change-detection">ng 1 change detection</h2>
+</section>
+
+<section  class=""><h2 id="-scope-"><code>$scope</code></h2>
+</section>
+
+<section  class=""><h2 id="behind-the-scenes">Behind the scenes</h2>
+</section>
+
+<section  class=""><h2 id="-apply-"><code>$apply()</code></h2>
+<ul>
+<li>library authors: wrap all async </li>
+</ul>
+<pre><code class="lang-javascript">// rought version of ng-click
+el.on(&quot;click&quot;, function(event) {
+  $scope.$apply(function() {
+    $scope.$eval(userCallback, {
+      $event: event,
+    });
+  });
+});
+</code></pre>
+</section>
+
+<section  class=""><h2 id="pretty-good-still-nasty">Pretty good, still nasty</h2>
+</section>
+
+<section  class=""><h2 id="ng-2-no-scope-">ng 2: no <code>$scope</code></h2>
+</section>
+
+<section  class=""><h2 id="zones-">Zones!</h2>
+<pre><code>@Component({
+  selector: &#39;toggler&#39;,
+  template: &#39;&lt;button (click)=&quot;toggle()&quot;&gt;
+    {{ msg }}&lt;/button&gt;&#39;,
+})
+class TogglerComponent {
+  constructor() { 
+    this.msg = &quot;Click me&quot;;
+  }
+  toggle() {
+    this.msg = &quot;You clicked me!&quot;;
+    setTimeout(() =&gt; { 
+      this.msg = &quot;Click me&quot;;
+    }, 250);
+  }
+}
+</code></pre></section>
+
+<section  class=""><h2 id="how-">How?</h2>
+</section>
+
+<section  class=""><h2 id="patching">Patching</h2>
+<p>Zones patch all async:</p>
+<pre><code class="lang-javascript">window.setTimeout = function(fn, timeout) {
+  originalTimeout(zone.callback(fn), timeout);
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="moar-">MOAR!!!</h2>
+<ul>
+<li>RxJS support</li>
+<li>Immutables via controlling updates</li>
+<li>ES.next support, non-TypeScript</li>
+</ul>
+</section>
+
+<section data-state='title' class=""><h2 id="ng2-summary">ng2 summary</h2>
+</section>
+
+<section  class=""><h2 id="broad-goals">Broad goals</h2>
+<ol>
+<li>Components</li>
+<li>Better DI</li>
+<li>Evolution: router, animation, tests etc</li>
+</ol>
+</section>
+
+<section  class=""><h2 id="vs-ng1-ng2-apps-">vs ng1, ng2 apps:</h2>
+<ol>
+<li>Better isolation of components</li>
+<li>More maintainable: ability to swap out services locally</li>
+<li>Predictable: immutability, one-way data-flow</li>
+<li>Better: powerful routing, animation</li>
+</ol>
+</section>
+
+<section  class=""><h2 id="links">Links</h2>
+<ul>
+<li><a href="http://victorsavkin.com/">Victor</a> - long form, from the inside</li>
+<li><a href="https://www.youtube.com/channel/UCzrskTiT_ObAk3xBkVxMz5g">Angular Connect videos</a> - videos from October</li>
+<li><a href="http://egghead.io">egghead.io</a> - quality ng 1 + ng 2 education</li>
+<li><a href="https://github.com/AngularClass/awesome-angular2">Awesome Angular</a> - curated list of resources</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="thanks-">Thanks!</h2>
+<p><a href="https://twitter.com/timruffles">@timruffles</a></p>
+</section>
+
+</div>
+</div>
+
+<!-- demo code -->
+
+
+<!-- demos -->
+
+<!-- live coding -->
+<script src=src/js/little-console.js></script>
+<script src=src/js/showConsoles.js></script>
+
+<!-- reveal -->
+<script src="reveal/lib/js/head.min.js"></script>
+<script src="reveal/plugin/highlight/highlight.js"></script>
+<script src="reveal/js/reveal.js"></script>
+<script src="src/js/revealConfig.js"></script>
+
+<!-- plugins -->
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</body>
