@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+  <title>Angular 2 is coming!</title>
+  <script src="../node_modules/systemjs/dist/system.src.js"></script>
+  <script src="../node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script src="../node_modules/angular2/bundles/router.dev.js"></script>
+  <script>
+    System.config({
+      packages: {
+        app: {
+          defaultExtension: 'js'
+        },
+      },
+    });
+    System.import('app/app');
+  </script>
+  <style>
+    body {
+      padding: 2em;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <app>Loading...</app>
+</body>
